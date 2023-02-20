@@ -24,7 +24,7 @@ class CreateAdminRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'email' => ['required', 'email', 'unique:App\Models\User,email'],
-            'phone' => ['required', 'string']
+            'phone' => ['required', 'string'],
         ];
     }
 }

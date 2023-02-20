@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\UserType;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -42,7 +44,9 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function login()
 {
-    // ..
+    return test()->actingAs(User::factory()->make([
+        'type' => UserType::SUPERADMIN,
+    ]));
 }

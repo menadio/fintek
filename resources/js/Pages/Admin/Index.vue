@@ -28,19 +28,19 @@
                         <div class="mx-auto grid max-w-7xl gap-y-20 gap-x-8 px-6 lg:px-8 xl:grid-cols-3">
                             <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-3 sm:gap-y-16 xl:col-span-3">
                                 <li v-for="admin in admins" :key="admin.name">
+                                    <Link :href="route('admins.show', admin)">
                                         <div class="flex items-center gap-x-6">
-<!--                                        <Link :href="route('admin.show', admin)">-->
-                                            <img class="h-16 w-16 rounded-full"
-                                                 :src="admin.imageUrl ?? 'https://via.placeholder.com/150'" alt=""/>
-                                            <div>
-                                                <h3 class="text-base font-semibold leading-7 tracking-tight text-white">
-                                                    {{ admin.name }}</h3>
-                                                <p class="text-sm font-semibold leading-6 text-gray">{{
-                                                        admin.phone
-                                                    }}</p>
-                                            </div>
-<!--                                    </Link>-->
+                                                <img class="h-16 w-16 rounded-full"
+                                                    :src="admin.imageUrl ?? 'https://via.placeholder.com/150'" alt=""/>
+                                                <div>
+                                                    <h3 class="text-base font-semibold leading-7 tracking-tight text-white">
+                                                        {{ admin.name }}</h3>
+                                                    <p class="text-sm font-semibold leading-6 text-gray">{{
+                                                            admin.phone
+                                                        }}</p>
+                                                </div>
                                         </div>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>

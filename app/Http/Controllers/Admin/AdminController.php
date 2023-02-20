@@ -23,7 +23,7 @@ class AdminController extends Controller
     {
         return Inertia::render('Admin/Index', [
             'admins' => User::where('type', UserType::ADMIN)
-                ->get()
+                ->get(),
         ]);
     }
 
@@ -33,7 +33,7 @@ class AdminController extends Controller
     public function create(): \Inertia\Response
     {
         return Inertia::render('Admin/Create', [
-            'isSuperAdmin' => auth()->user()->type->isSuperAdmin()
+            'isSuperAdmin' => auth()->user()->type->isSuperAdmin(),
         ]);
     }
 
@@ -46,9 +46,9 @@ class AdminController extends Controller
         $admin = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Str::password(8),
+            'password' => Hash::make(Str::password(8)),
             'phone' => $request->phone,
-            'type' => UserType::ADMIN
+            'type' => UserType::ADMIN,
         ]);
 
         // emit admin created event
@@ -60,9 +60,11 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id): Response
+    public function show(User $admin): \Inertia\Response
     {
-        //
+        return Inertia::render('Admin/Show', [
+            'admin' => $admin,
+        ]);
     }
 
     /**

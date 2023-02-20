@@ -36,12 +36,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('admin')->middleware('auth')->group(function () {
-   Route::get('/administrators', [AdminController::class, 'index'])->name('admins.index');
+Route::prefix('admin/administrators')->middleware('auth')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admins.index');
 
-   Route::get('/administrators/create', [AdminController::class, 'create'])->name('admins.create');
+    Route::get('/create', [AdminController::class, 'create'])->name('admins.create');
 
-   Route::post('/administrators', [AdminController::class, 'store'])->name('admins.store');
+    Route::post('/', [AdminController::class, 'store'])->name('admins.store');
+
+    Route::get('/{admin}', [AdminController::class, 'show'])->name('admins.show');
 });
 
 require __DIR__.'/auth.php';
